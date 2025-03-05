@@ -114,6 +114,8 @@ struct rgb_matrix_limits_t rgb_matrix_get_limits(uint8_t iter);
 #define RGB_MATRIX_TEST_LED_FLAGS() \
     if (!HAS_ANY_FLAGS(g_led_config.flags[i], params->flags)) continue
 
+#define RGB_MATRIX_TIMEOUT_INFINITE (UINT32_MAX)
+
 enum rgb_matrix_effects {
     RGB_MATRIX_NONE = 0,
 
@@ -167,6 +169,9 @@ void rgb_matrix_set_color_all(uint8_t red, uint8_t green, uint8_t blue);
 void rgb_matrix_handle_key_event(uint8_t row, uint8_t col, bool pressed);
 
 void rgb_matrix_task(void);
+
+void rgb_matrix_none_indicators_kb(void);
+void rgb_matrix_none_indicators_user(void);
 
 // This runs after another backlight effect and replaces
 // colors already set
@@ -230,7 +235,20 @@ void        rgb_matrix_flags_step_noeeprom(void);
 void        rgb_matrix_flags_step(void);
 void        rgb_matrix_flags_step_reverse_noeeprom(void);
 void        rgb_matrix_flags_step_reverse(void);
-void        rgb_matrix_update_pwm_buffers(void);
+#ifdef RGB_MATRIX_TIMEOUT
+
+#    if RGB_MATRIX_TIMEOUT > 0
+void rgb_matrix_disable_timeout_set(uint32_t timeout);
+void rgb_matrix_disable_time_reset(void);
+bool rgb_matrix_timeouted(void);
+#    endif
+#endif
+#ifdef RGB_MATRIX_DRIVER_SHUTDOWN_ENABLE
+void rgb_matrix_driver_shutdown(void);
+void rgb_matrix_driver_exit_shutdown(void);
+bool rgb_matrix_is_driver_shutdown(void);
+bool rgb_matrix_driver_allow_shutdown(void);
+#endif
 
 #ifdef RGB_MATRIX_MODE_NAME_ENABLE
 const char *rgb_matrix_get_mode_name(uint8_t mode);
