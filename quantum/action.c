@@ -31,6 +31,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "keycode_config.h"
 #include "debug.h"
 #include "quantum.h"
+#ifdef LK_WIRELESS_ENABLE
+#include "wireless.h"
+#endif
 
 #ifdef BACKLIGHT_ENABLE
 #    include "backlight.h"
@@ -1049,8 +1052,15 @@ __attribute__((weak)) void unregister_code(uint8_t code) {
  */
 __attribute__((weak)) void tap_code_delay(uint8_t code, uint16_t delay) {
     register_code(code);
+#ifdef LK_WIRELESS_ENABLE
+    send_string_task();
+#endif
     wait_ms(delay);
     unregister_code(code);
+#ifdef LK_WIRELESS_ENABLE
+    send_string_task();
+#endif
+
 }
 
 /** \brief Tap a keycode with the default delay.
