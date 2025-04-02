@@ -11,12 +11,16 @@ A customizable 75% ergonomic keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/k11_max/ansi_encoder/rgb:default
+    make keychron/k11_max/ansi_encoder/rgb:via
     make keychron/k11_max/ansi_encoder/white:default
+    make keychron/k11_max/ansi_encoder/white:via
 
 Flashing example for this keyboard:
 
     make keychron/k11_max/ansi_encoder/rgb:default:flash
+    make keychron/k11_max/ansi_encoder/rgb:via:flash
     make keychron/k11_max/ansi_encoder/white:default:flash
+    make keychron/k11_max/ansi_encoder/white:via:flash
 
 **Reset Key**: Toggle mode switch to "Cable", hold down the *Esc* key or reset button underneath space bar while connecting the USB cable,
 

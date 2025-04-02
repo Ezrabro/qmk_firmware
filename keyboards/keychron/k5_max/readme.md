@@ -11,12 +11,16 @@ A customizable 84 keys 100% fullsize keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/k5_max/ansi/rgb:default
+    make keychron/k5_max/ansi/rgb:via
     make keychron/k5_max/ansi/white:default
+    make keychron/k5_max/ansi/white:via
 
 Flashing example for this keyboard:
 
     make keychron/k5_max/ansi/rgb:default:flash
+    make keychron/k5_max/ansi/rgb:via:flash
     make keychron/k5_max/ansi/white:default:flash
+    make keychron/k5_max/ansi/white:via:flash
 
 **Reset Key**: Disconnect the USB cable, toggle mode switch to "Cable", hold down the *Esc* key or reset button underneath space bar, then connect the USB cable.
 

@@ -11,20 +11,32 @@ A customizable 65% low profile keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/k7_max/ansi/rgb:default
+    make keychron/k7_max/ansi/rgb:via
     make keychron/k7_max/ansi/white:default
+    make keychron/k7_max/ansi/white:via
     make keychron/k7_max/iso/rgb:default
+    make keychron/k7_max/iso/rgb:via
     make keychron/k7_max/iso/white:default
+    make keychron/k7_max/iso/white:via
     make keychron/k7_max/jis/rgb:default
+    make keychron/k7_max/jis/rgb:via
     make keychron/k7_max/jis/white:default
+    make keychron/k7_max/jis/white:via
 
 Flashing example for this keyboard:
 
     make keychron/k7_max/ansi/rgb:default:flash
+    make keychron/k7_max/ansi/rgb:via:flash
     make keychron/k7_max/ansi/white:default:flash
+    make keychron/k7_max/ansi/white:via:flash
     make keychron/k7_max/iso/rgb:default:flash
+    make keychron/k7_max/iso/rgb:via:flash
     make keychron/k7_max/iso/white:default:flash
+    make keychron/k7_max/iso/white:via:flash
     make keychron/k7_max/jis/rgb:default:flash
+    make keychron/k7_max/jis/rgb:via:flash
     make keychron/k7_max/jis/white:default:flash
+    make keychron/k7_max/jis/white:via:flash
 
 **Reset Key**: Disconnect the USB cable, toggle mode switch to "Cable", hold down the *Esc* key or reset button underneath space bar, then connect the USB cable.
 

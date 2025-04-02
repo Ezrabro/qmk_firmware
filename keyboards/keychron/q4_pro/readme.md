@@ -11,12 +11,16 @@ A wireless custom mechanical 60% keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/q4_pro/ansi:default
+    make keychron/q4_pro/ansi:via
     make keychron/q4_pro/iso:default
+    make keychron/q4_pro/iso:via
 
 Flashing example for this keyboard:
 
     make keychron/q4_pro/ansi:default:flash
+    make keychron/q4_pro/ansi:via:flash
     make keychron/q4_pro/iso:default:flash
+    make keychron/q4_pro/iso:via:flash
 
 **Reset Key**: Connect the USB cable, toggle mode switch to "Off", hold down the *Esc* key or reset button underneath space bar, then toggle then switch to "Cable".
 

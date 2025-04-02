@@ -11,10 +11,12 @@ A customizable full-size 100% wireless keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/v6_max/ansi_encoder:default
+    make keychron/v6_max/ansi_encoder:via
 
 Flashing example for this keyboard:
 
     make keychron/v6_max/ansi_encoder:default:flash
+    make keychron/v6_max/ansi_encoder:via:flash
 
 **Reset Key**: Toggle mode switch to "Cable", hold down the *Esc* key or reset button underneath space bar while connecting the USB cable,
 

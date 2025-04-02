@@ -11,10 +11,12 @@ A customizable 75% keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/q1_max/ansi_encoder:default
+    make keychron/q1_max/ansi_encoder:via
 
 Flashing example for this keyboard:
 
     make keychron/q1_max/ansi_encoder:default:flash
+    make keychron/q1_max/ansi_encoder:via:flash
 
 **Reset Key**: Toggle mode switch to "Cable", hold down the *Esc* key or reset button underneath space bar while connecting the USB cable,
 

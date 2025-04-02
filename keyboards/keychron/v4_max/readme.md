@@ -11,12 +11,16 @@ A customizable keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/v4_max/ansi:default
+    make keychron/v4_max/ansi:via
     make keychron/v4_max/iso:default
+    make keychron/v4_max/iso:via
 
 Flashing example for this keyboard:
 
     make keychron/v4_max/ansi_encoder:default:flash
+    make keychron/v4_max/ansi_encoder:via:flash
     make keychron/v4_max/iso_encoder:default:flash
+    make keychron/v4_max/iso_encoder:via:flash
 
 **Reset Key**: Toggle mode switch to "Cable", hold down the *Esc* key or reset button underneath space bar while connecting the USB cable,
 

@@ -11,18 +11,26 @@ A customizable 108 keys TKL keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/k10_max/ansi/rgb:default
+    make keychron/k10_max/ansi/rgb:via
     make keychron/k10_max/ansi/white:default
+    make keychron/k10_max/ansi/white:via
 
     make keychron/k10_max/iso/rgb:default
+    make keychron/k10_max/iso/rgb:via
     make keychron/k10_max/iso/white:default
+    make keychron/k10_max/iso/white:via
 
 Flashing example for this keyboard:
 
     make keychron/k10_max/ansi/rgb:default:flash
+    make keychron/k10_max/ansi/rgb:via:flash
     make keychron/k10_max/ansi/white:default:flash
+    make keychron/k10_max/ansi/white:via:flash
 
     make keychron/k10_max/iso/rgb:default:flash
+    make keychron/k10_max/iso/rgb:via:flash
     make keychron/k10_max/iso/white:default:flash
+    make keychron/k10_max/iso/white:via:flash
 
 **Reset Key**: Toggle mode switch to "Cable", hold down the *Esc* key or reset button underneath space bar while connecting the USB cable,
 

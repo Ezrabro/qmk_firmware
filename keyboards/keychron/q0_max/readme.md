@@ -11,10 +11,12 @@ A customizable number keypad.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/q0_max/encoder:default
+    make keychron/q0_max/encoder:via
 
 Flashing example for this keyboard:
 
     make keychron/q0_max/encoder:default:flash
+    make keychron/q0_max/encoder:via:flash
 
 **Reset Key**: Disconnect the USB cable, toggle mode switch to "Cable", hold down the *O* key or reset button underneath *0*, then connect the USB cable.
 

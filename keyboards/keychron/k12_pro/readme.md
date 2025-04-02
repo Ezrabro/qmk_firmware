@@ -11,12 +11,16 @@ A customizable 60% keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/k12_pro/ansi/rgb:default
+    make keychron/k12_pro/ansi/rgb:via
     make keychron/k12_pro/ansi/white:default
+    make keychron/k12_pro/ansi/white:via
 
 Flashing example for this keyboard:
 
     make keychron/k12_pro/ansi/rgb:default:flash
+    make keychron/k12_pro/ansi/rgb:via:flash
     make keychron/k12_pro/ansi/white:default:flash
+    make keychron/k12_pro/ansi/white:via:flash
 
 **Reset Key**: Connect the USB cable, toggle mode switch to "Off", hold down the *Esc* key or reset button underneath space bar, then toggle then switch to "Cable".
 

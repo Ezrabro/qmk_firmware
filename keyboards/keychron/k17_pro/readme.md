@@ -11,12 +11,16 @@ A wireless custom mechanical 96% keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/k17_pro/ansi_encoder:default
+    make keychron/k17_pro/ansi_encoder:via
     make keychron/k17_pro/iso_encoder:default
+    make keychron/k17_pro/iso_encoder:via
 
 Flashing example for this keyboard:
 
     make keychron/k17_pro/ansi_encoder:default:flash
+    make keychron/k17_pro/ansi_encoder:via:flash
     make keychron/k17_pro/iso_encoder:default:flash
+    make keychron/k17_pro/iso_encoder:via:flash
 
 ## bootloader
 

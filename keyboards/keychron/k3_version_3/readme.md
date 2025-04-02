@@ -11,12 +11,32 @@ A customizable TKL keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/k3_version_3/ansi/rgb:default
+    make keychron/k3_version_3/ansi/rgb:via
     make keychron/k3_version_3/ansi/white:default
+    make keychron/k3_version_3/ansi/white:via
+    make keychron/k3_version_3/iso/rgb:default
+    make keychron/k3_version_3/iso/rgb:via
+    make keychron/k3_version_3/iso/white:default
+    make keychron/k3_version_3/iso/white:via
+    make keychron/k3_version_3/jis/rgb:default
+    make keychron/k3_version_3/jis/rgb:via
+    make keychron/k3_version_3/jis/white:default
+    make keychron/k3_version_3/jis/white:via
 
 Flashing example for this keyboard:
 
     make keychron/k3_version_3/ansi/rgb:default:flash
+    make keychron/k3_version_3/ansi/rgb:via:flash
     make keychron/k3_version_3/ansi/white:default:flash
+    make keychron/k3_version_3/ansi/white:via:flash
+    make keychron/k3_version_3/iso/rgb:default:flash
+    make keychron/k3_version_3/iso/rgb:via:flash
+    make keychron/k3_version_3/iso/white:default:flash
+    make keychron/k3_version_3/iso/white:via:flash
+    make keychron/k3_version_3/jis/rgb:default:flash
+    make keychron/k3_version_3/jis/rgb:via:flash
+    make keychron/k3_version_3/jis/white:default:flash
+    make keychron/k3_version_3/jis/white:via:flash
 
 **Reset Key**: Toggle mode switch to "Cable", hold down the *Esc* key or reset button underneath space bar while connecting the USB cable,
 

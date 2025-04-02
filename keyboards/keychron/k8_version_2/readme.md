@@ -11,20 +11,32 @@ A customizable 87 keys wireless TKL keyboard.
 Make example for this keyboard (after setting up your build environment):
 
     make keychron/k8_version_2/ansi/rgb:default
+    make keychron/k8_version_2/ansi/rgb:via
     make keychron/k8_version_2/ansi/white:default
+    make keychron/k8_version_2/ansi/white:via
     make keychron/k8_version_2/iso/rgb:default
+    make keychron/k8_version_2/iso/rgb:via
     make keychron/k8_version_2/iso/white:default
+    make keychron/k8_version_2/iso/white:via
     make keychron/k8_version_2/jisi/rgb:default
+    make keychron/k8_version_2/jisi/rgb:via
     make keychron/k8_version_2/jis/white:default
+    make keychron/k8_version_2/jis/white:via
 
 Flashing example for this keyboard:
 
     make keychron/k8_version_2/ansi/rgb:default:flash
+    make keychron/k8_version_2/ansi/rgb:via:flash
     make keychron/k8_version_2/ansi/white:default:flash
+    make keychron/k8_version_2/ansi/white:via:flash
     make keychron/k8_version_2/iso/rgb:default:flash
+    make keychron/k8_version_2/iso/rgb:via:flash
     make keychron/k8_version_2/iso/white:default:flash
+    make keychron/k8_version_2/iso/white:via:flash
     make keychron/k8_version_2/jisi/rgb:default:flash
+    make keychron/k8_version_2/jisi/rgb:via:flash
     make keychron/k8_version_2/jis/white:default:flash
+    make keychron/k8_version_2/jis/white:via:flash
 
 **Reset Key**: Toggle mode switch to "Cable", hold down the *Esc* key or reset button underneath space bar while connecting the USB cable,
 
