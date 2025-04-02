@@ -111,6 +111,18 @@ bool process_record_keychron_common(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false; // Skip all further processing of this key
+#ifdef LED_MATRIX_ENABLE
+        case BL_SPI:
+                if (record->event.pressed) {
+                    led_matrix_increase_speed();
+                }
+            return true;
+        case BL_SPD:
+                if (record->event.pressed) {
+                    led_matrix_decrease_speed();
+                }
+            return true;
+#endif
         default:
             return true; // Process all other keycodes normally
     }

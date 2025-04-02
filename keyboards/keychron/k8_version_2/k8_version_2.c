@@ -15,10 +15,11 @@
  */
 
 #include "quantum.h"
+#    include "keychron_common.h"
 #include "keychron_task.h"
 #ifdef FACTORY_TEST_ENABLE
 #    include "factory_test.h"
-#    include "keychron_common.h"
+
 #endif
 #ifdef LK_WIRELESS_ENABLE
 #    include "lkbt51.h"
@@ -31,7 +32,7 @@
 #define POWER_ON_LED_DURATION 3000
 static uint32_t power_on_indicator_timer;
 
-#if defined(LK_WIRELESS_ENABLE)
+#if defined(BT_INDICATION_LED_PIN_LIST)
 pin_t bt_led_pins[] = BT_INDICATION_LED_PIN_LIST;
 #endif
 
@@ -46,7 +47,7 @@ bool dip_switch_update_kb(uint8_t index, bool active) {
 
 void keyboard_post_init_kb(void) {
 #ifdef LK_WIRELESS_ENABLE
-    palSetLineMode(BT_MODE_SELECT_PIN, PAL_MODE_INPUT);
+    gpio_set_pin_input(BT_MODE_SELECT_PIN);
 
     lkbt51_init(false);
     wireless_init();

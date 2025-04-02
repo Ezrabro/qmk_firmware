@@ -83,7 +83,14 @@ enum {
     PROF3 = _______,
     __PROF3_NEXT = __BAT_LVL_NEXT,
 #endif
-    NEW_SAFE_RANGE = __PROF3_NEXT
+#ifdef LED_MATRIX_ENABLE
+    BL_SPI = __BAT_LVL_NEXT,
+    BL_SPD,
+    __BL_SPD_NEXT,
+#else
+    __BL_SPD_NEXT = __PROF3_NEXT,
+#endif
+    NEW_SAFE_RANGE = __BL_SPD_NEXT
 };
 
 #define KC_TASK KC_TASK_VIEW
