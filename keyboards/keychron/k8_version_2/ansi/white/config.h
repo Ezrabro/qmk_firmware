@@ -22,7 +22,7 @@
 #    define DRIVER_CS_PINS \
         { C9 }
 
-/* Scan phase of led driver */
+/* Set scan phase of led driver */
 #    define SNLED27351_PHASE_CHANNEL SNLED27351_SCAN_PHASE_6_CHANNEL
 /* Set LED driver current */
 #    define SNLED27351_CURRENT_TUNE \
