@@ -231,13 +231,14 @@ void usb_remote_wakeup(void) {
                 wait_ms(300);
 #ifdef MOUSEKEY_ENABLE
                 // Wiggle to wakeup
-                mousekey_on(KC_MS_LEFT);
+                mousekey_on(MS_LEFT);
                 mousekey_send();
                 wait_ms(10);
-                mousekey_on(KC_MS_RIGHT);
+                mousekey_on(MS_RGHT);
                 mousekey_send();
                 wait_ms(10);
-                mousekey_off((KC_MS_RIGHT));
+                mousekey_off(MS_RGHT);
+                mousekey_off(MS_LEFT);
                 mousekey_send();
 #else
                 set_mods(0x02);

@@ -175,7 +175,7 @@ __attribute__((weak)) void lpm_enter_low_power(void) {
     static pin_t dip_switch_pad[] = DIP_SWITCH_PINS;
 
     for (uint8_t i = 0; i < NUMBER_OF_DIP_SWITCHES; i++) {
-        setPinInputLow(dip_switch_pad[i]);
+        gpio_set_pin_input_low(dip_switch_pad[i]);
     }
 #endif
     battery_stop();
@@ -236,9 +236,6 @@ __attribute__((weak)) void lpm_wakeup(void) {
     dip_switch_read(true);
 #endif
 
-    /* Call debounce_free() to avoiding memory leak of debounce_counters as debounce_init()
-    invoked in matrix_init() alloc new memory to debounce_counters */
-    debounce_free();
     matrix_init();
 }
 
