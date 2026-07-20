@@ -1,0 +1,32 @@
+name: Sync master with upstream QMK
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # runs daily at 6am UTC
+  workflow_dispatch:      # lets you trigger it manually from GitHub's UI too
+permissions: 
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: master
+
+      - name: Sync with upstream
+        run: |
+          git remote add upstream https://github.com/qmk/qmk_firmware.git
+          git fetch upstream master
+          git reset --hard upstream/master
+          git push origin master --force
+
+      - name: Check if Keychron needs rebasing
+        run: |
+          git fetch origin Keychron
+          BEHIND=$(git rev-list --count origin/Keychron..master)
+          echo "Keychron is $BEHIND commits behind master"
+          if [ "$BEHIND" -gt "0" ]; then
+            echo "::warning::Keychron branch is now $BEHIND commits behind master — consider rebasing"
+          fi
