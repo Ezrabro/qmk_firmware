@@ -157,7 +157,9 @@ void encoder_cb_init(void) {
 }
 #endif
 
-//__attribute__((weak)) bool raw_hid_receive_keychron(uint8_t *data, uint8_t length) { return true; }
+__attribute__((weak)) bool raw_hid_receive_keychron(uint8_t *data, uint8_t length) {
+    return true;
+}
 #define PROTOCOL_VERSION 0x02
 
 enum { kc_get_protocol_version = 0xA0, kc_get_firmware_version = 0xA1, kc_get_support_feature = 0xA2, kc_get_default_layer = 0xA3 };
@@ -184,8 +186,7 @@ void get_support_feature(uint8_t *data) {
 }
 
 bool kc_raw_hid_rx(uint8_t *data, uint8_t length) {
-    // if (!raw_hid_receive_keychron(data, length))
-    //     return false;
+    if (!raw_hid_receive_keychron(data, length)) return false;
     switch (data[0]) {
         case kc_get_protocol_version:
             data[1] = PROTOCOL_VERSION;
