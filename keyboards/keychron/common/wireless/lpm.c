@@ -201,7 +201,7 @@ __attribute__((weak)) void lpm_wakeup(void) {
 
     halInit();
 
-#ifdef ENCODER_ENABLE
+#if defined(ENCODER_ENABLE) && (PAL_USE_CALLBACKS == TRUE)
     encoder_cb_init();
 #endif
 

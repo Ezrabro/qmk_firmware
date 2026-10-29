@@ -137,7 +137,7 @@ void keychron_common_task(void) {
     }
 }
 
-#ifdef ENCODER_ENABLE
+#if defined(ENCODER_ENABLE) && (PAL_USE_CALLBACKS == TRUE)
 static void encoders_pins_cb(void *param) {
     uint8_t index = (uint32_t)param;
     extern void encoder_quadrature_handle_inerrupt_read(uint8_t index);
