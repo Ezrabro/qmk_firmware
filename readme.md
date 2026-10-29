@@ -1,7 +1,16 @@
 # Ezrabro's Keychron QMK fork
 
 A personal fork of [QMK Firmware](https://github.com/qmk/qmk_firmware) that keeps Keychron's
-wireless stack working on top of a current QMK base.
+wireless stack working on top of a current QMK base. My own OpenRGB and DIP-switch customisations
+live on a separate personal branch layered on top of it.
+
+**`Keychron` is the main branch.** It is current QMK + Keychron's wireless stack + the repairs
+described below, with no personal customisations — it is the branch that represents the project as
+a whole.
+
+**`custom-ezrabro-stuff` is what this keyboard is built from.** It is `Keychron` plus my own
+OpenRGB / DIP-switch work, carried over from the old `openRGBTest` branch. Nothing personal lives on
+`Keychron`.
 
 The keyboard this exists for is a **Keychron K5 Version 2** (`k5x-h3-de`), built from
 `keyboards/keychron/k5_version_2/` — three layouts (ANSI / ISO / JIS), each with an RGB and a
@@ -30,13 +39,15 @@ The ancestry:
 
 ```
 qmk/qmk_firmware  ──►  Keychron/qmk_firmware  ──►  Ezrabro/qmk_firmware
-                                                      ├── master       (pure upstream snapshot)
-                                                      ├── Keychron     (the working branch)
-                                                      └── openRGBTest  (personal customisations)
+                                                      ├── Keychron                  ◄── main branch
+                                                      │     └── custom-ezrabro-stuff ◄── build this (personal)
+                                                      ├── master                    (pure upstream snapshot)
+                                                      └── backup/…                  (pre-sync safety copies)
 ```
 
-As of the last fetch, branch `Keychron` is **0 commits behind `upstream/master`** and 35 commits
-ahead of it (all Keychron work, including the four repairs listed below).
+As of the last fetch, both `Keychron` and `custom-ezrabro-stuff` are **0 commits behind
+`upstream/master`**. `custom-ezrabro-stuff` is `Keychron` plus the personal customisation commits
+and nothing else.
 
 ---
 
@@ -44,13 +55,18 @@ ahead of it (all Keychron work, including the four repairs listed below).
 
 | Branch | What it is | State |
 |---|---|---|
-| **`Keychron`** | The branch you build from. Upstream QMK + Keychron wireless + the repairs below. | `6337740e03`, 120 ahead of `origin/Keychron`, **not pushed** |
-| `master` | Untouched mirror of the upstream snapshot the fork was cut at. Kept for reference and diffing. | `180f394b48` |
-| `openRGBTest` | `Keychron` + personal DIP-switch and OpenRGB work. | `e7985ccd52`, untouched during this work |
+| **`Keychron`** | **The main branch.** Upstream QMK + Keychron wireless + the repairs below. No personal customisations. | main |
+| **`custom-ezrabro-stuff`** | Personal overlay: `Keychron` + the OpenRGB / DIP-switch customisations. **Build this for the K5 v2.** | `Keychron` + personal |
+| `master` | Untouched mirror of the fork's own old master branch. Kept for reference and diffing. | stale |
+| `AzarQMK` | Older personal branch, predates the upstream sync. Kept for reference. | — |
 | `backup/Keychron-2026-10-29` | Safety branch taken before the sync. | `c2190644c9` |
-| `backup/openRGBTest-2026-10-29` | Safety branch taken before the sync. | `e7985ccd52` |
+| `backup/openRGBTest-2026-10-29` | Safety branch taken before the sync; the only remaining copy of the old `openRGBTest` work. | `e7985ccd52` |
 
-Only `Keychron` was worked on. Nothing was pushed and nothing was flashed.
+`openRGBTest` was folded into `custom-ezrabro-stuff` and then deleted. Its three commits are
+represented there — the DIP-switch rework and extra animations were cherry-picked, and the USB /
+raw-HID fixes were re-applied by hand. Every one of its changes is accounted for.
+
+Nothing was pushed and nothing was flashed.
 
 ---
 
@@ -173,13 +189,19 @@ The real `azar` keymap lives outside the repo, in the QMK userspace overlay at
 
 ## Not done / loose ends
 
-- **Nothing has been pushed.** `Keychron` is 120 commits ahead of `origin/Keychron`.
-- **Nothing has been flashed.** All results above are build-only.
-- **`openRGBTest` was not touched** — still `e7985ccd52`, identical to its backup branch. Merging
-  `Keychron` into it and re-applying the DIP-switch / OpenRGB work is the next job, and it is not
-  started. That branch is 3 ahead and roughly 117 behind.
-- **Scratch files** `_all.txt`, `_humans.txt` and `.tmp/` are untracked and not gitignored. They
-  are build/sweep output and can be deleted at any time.
+- **Nothing has been pushed.** `custom-ezrabro-stuff` does not exist on `origin` yet.
+- **Nothing has been flashed.** All results above are build-only. The OpenRGB fix in
+  `b7d8f1614b` compiles, but no one has confirmed on hardware that OpenRGB actually talks to the
+  board.
+- **`_all.txt` and `_humans.txt` are not scratch** — they are saved conversation transcripts going
+  back to July 2026. Untracked, so they never reach a commit; leave them where they are. `.tmp/`
+  (about 91 MB) really is build output and can be deleted at any time.
+- **Neither branch is on `origin` at its current tip.** `origin/Keychron` is still at
+  `c2190644c9`, the pre-sync state; `custom-ezrabro-stuff` does not exist remotely at all.
+  Pushing is 120+ commits either way.
+- **The local `openRGBTest` branch was deleted** after its content was verified present here. Its
+  tip survives as `backup/openRGBTest-2026-10-29` (`e7985ccd52`) and can be restored with
+  `git branch openRGBTest e7985ccd52`.
 
 ---
 
@@ -187,4 +209,4 @@ The real `azar` keymap lives outside the repo, in the QMK userspace overlay at
 
 All firmware code here is QMK's and Keychron's work, under their respective licences
 (GPLv2 / GPLv3 / Modified BSD — see `license_*.md`). This fork adds the sync, the repairs
-described above, and the personal customisations on `openRGBTest`.
+described above, and the personal customisations carried over from the old `openRGBTest` branch.
