@@ -53,6 +53,11 @@ enum kb_reports {
 };
 #endif
 
+// Plover HID has its own dedicated interface rather than the shared endpoint, so its report ID
+// is fixed by the protocol at 0x50 ('P') and is intentionally NOT a member of enum
+// hid_report_ids above (which only enumerates shared-endpoint reports up to REPORT_ID_COUNT).
+#define REPORT_ID_PLOVER_HID 0x50
+
 /* Mouse buttons */
 #define MOUSE_BTN_MASK(n) (1 << (n))
 enum mouse_buttons {
@@ -201,6 +206,11 @@ typedef struct {
     uint8_t  report_id;
     uint32_t usage;
 } PACKED report_programmable_button_t;
+
+typedef struct {
+    uint8_t report_id; // REPORT_ID_PLOVER_HID
+    uint8_t data[8];
+} PACKED report_plover_hid_t;
 
 #ifdef MOUSE_EXTENDED_REPORT
 #    define MOUSE_REPORT_XY_MIN (INT16_MIN + 1)

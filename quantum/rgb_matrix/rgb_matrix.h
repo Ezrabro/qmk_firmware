@@ -235,6 +235,7 @@ void        rgb_matrix_flags_step_noeeprom(void);
 void        rgb_matrix_flags_step(void);
 void        rgb_matrix_flags_step_reverse_noeeprom(void);
 void        rgb_matrix_flags_step_reverse(void);
+void        rgb_matrix_update_pwm_buffers(void);
 #ifdef RGB_MATRIX_TIMEOUT
 
 #    if RGB_MATRIX_TIMEOUT > 0
