@@ -73,10 +73,10 @@ bool keychron_task_kb(void) {
 
             if (!host_keyboard_led_state().caps_lock) gpio_write_pin(LED_CAPS_LOCK_PIN, !LED_PIN_ON_STATE);
             if (!host_keyboard_led_state().num_lock) gpio_write_pin(LED_NUM_LOCK_PIN, !LED_PIN_ON_STATE);
-            if (readPin(B14) == 0) {
-                writePin(LED_MAC_PIN, !LED_OS_PIN_ON_STATE);
-            } else if (readPin(B14) == 1) {
-                writePin(LED_WIN_PIN, !LED_OS_PIN_ON_STATE);
+            if (gpio_read_pin(B14) == 0) {
+                gpio_write_pin(LED_MAC_PIN, !LED_OS_PIN_ON_STATE);
+            } else {
+                gpio_write_pin(LED_WIN_PIN, !LED_OS_PIN_ON_STATE);
             }
 #ifdef LK_WIRELESS_ENABLE
             gpio_write_pin(BAT_LOW_LED_PIN, !BAT_LOW_LED_PIN_ON_STATE);

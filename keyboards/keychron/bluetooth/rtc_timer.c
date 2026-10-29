@@ -14,8 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "hal.h"
+
 #if (HAL_USE_RTC)
-#    include "hal.h"
+
 #    include "rtc_timer.h"
 
 void rtc_timer_init(void) {

@@ -98,10 +98,10 @@ static pin_t bt_led_pin_list[HOST_DEVICES_COUNT] = BT_INDICATION_LED_PIN_LIST;
 #    define SET_LED_BT(idx) led_matrix_set_value(idx, 255)
 #    define SET_LED_LOW_BAT(idx) led_matrix_set_value(idx, 255)
 #    define LED_DRIVER_IS_ENABLED led_matrix_is_enabled
-#    define LED_DRIVER_EECONFIG_RELOAD() \
-        eeprom_read_block(&led_matrix_eeconfig, EECONFIG_LED_MATRIX, sizeof(led_matrix_eeconfig)); \
-        if (!led_matrix_eeconfig.mode) { \
-            eeconfig_update_led_matrix_default(); \
+#    define LED_DRIVER_EECONFIG_RELOAD()               \
+        eeconfig_read_led_matrix(&led_matrix_eeconfig); \
+        if (!led_matrix_eeconfig.mode) {                \
+            eeconfig_update_led_matrix_default();       \
         }
 #    define LED_DRIVER_ALLOW_SHUTDOWN led_matrix_driver_allow_shutdown
 #    define LED_DRIVER_ENABLE_NOEEPROM led_matrix_enable_noeeprom
@@ -121,10 +121,10 @@ static pin_t bt_led_pin_list[HOST_DEVICES_COUNT] = BT_INDICATION_LED_PIN_LIST;
 #    define SET_LED_BT(idx) rgb_matrix_set_color(idx, 0, 0, 255)
 #    define SET_LED_LOW_BAT(idx) rgb_matrix_set_color(idx, 255, 0, 0)
 #    define LED_DRIVER_IS_ENABLED rgb_matrix_is_enabled
-#    define LED_DRIVER_EECONFIG_RELOAD() \
-        eeprom_read_block(&rgb_matrix_config, EECONFIG_RGB_MATRIX, sizeof(rgb_matrix_config)); \
-        if (!rgb_matrix_config.mode) {  \
-            eeconfig_update_rgb_matrix_default();  \
+#    define LED_DRIVER_EECONFIG_RELOAD()          \
+        eeconfig_read_rgb_matrix(&rgb_matrix_config); \
+        if (!rgb_matrix_config.mode) {                \
+            eeconfig_update_rgb_matrix_default();     \
         }
 #    define LED_DRIVER_ALLOW_SHUTDOWN rgb_matrix_driver_allow_shutdown
 #    define LED_DRIVER_ENABLE_NOEEPROM rgb_matrix_enable_noeeprom
@@ -425,7 +425,7 @@ void indicator_battery_low(void) {
 #if defined(BAT_LOW_LED_PIN) || defined(BAT_LOW_LED_PIN_STATE)
     if (bat_low_pin_indicator && sync_timer_elapsed32(bat_low_pin_indicator) > (LOW_BAT_LED_BLINK_PERIOD)) {
 #    if defined(BAT_LOW_LED_PIN)
-        togglePin(BAT_LOW_LED_PIN);
+        gpio_toggle_pin(BAT_LOW_LED_PIN);
 #    else
         bat_low_led_pin_state = !bat_low_led_pin_state;
 #    endif

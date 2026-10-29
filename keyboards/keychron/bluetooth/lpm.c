@@ -44,7 +44,7 @@ void lpm_init(void) {
 #    if (USB_POWER_CONNECTED_LEVEL == 0)
     gpio_set_pin_input_high(USB_POWER_SENSE_PIN);
 #    else
-    setPinInputLow(USB_POWER_SENSE_PIN);
+    gpio_set_pin_input_low(USB_POWER_SENSE_PIN);
 #    endif
 #endif
     lpm_timer_reset();

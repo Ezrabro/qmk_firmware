@@ -169,7 +169,7 @@ static inline void enter_low_power_mode_prepare(void) {
     static pin_t dip_switch_pad[] = DIP_SWITCH_PINS;
 
     for (uint8_t i = 0; i < NUMBER_OF_DIP_SWITCHES; i++) {
-        setPinInputLow(dip_switch_pad[i]);
+        gpio_set_pin_input_low(dip_switch_pad[i]);
     }
 #endif
 }
@@ -250,10 +250,6 @@ void enter_power_mode(pm_t mode) {
     lpm_timer_reset();
     report_buffer_init();
 
-    /* Call debounce_free() to avoid memory leak as debounce_init() invoked in matrix_init() allocates
-     * new memory when using per row/key debounce
-     */
-    debounce_free();
     matrix_init();
     power_mode = PM_RUN;
 }

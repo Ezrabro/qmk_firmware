@@ -51,7 +51,7 @@ void lpm_pre_wakeup(void) {
     palSetLineMode(SPI_MOSI_PIN, PAL_MODE_ALTERNATE(5));
 #endif
 #ifdef LKBT51_INT_OUTPUT_PIN
-    writePinHigh(LKBT51_INT_OUTPUT_PIN);
+    gpio_write_pin_high(LKBT51_INT_OUTPUT_PIN);
 #endif
 }
 
