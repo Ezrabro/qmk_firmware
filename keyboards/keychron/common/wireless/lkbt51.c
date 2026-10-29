@@ -360,13 +360,21 @@ void lkbt51_send_consumer(uint16_t report) {
 void lkbt51_send_system(uint16_t report) {
     uint8_t hid_usage = report & 0xFF;
 
-    if (hid_usage < 0x81 || hid_usage > 0x83) return;
+    // 0x00 is a release (report cleared) and must reach the module, otherwise the
+    // host keeps seeing the key held down. 0x9B is SYSTEM_RESTART.
+    if ((hid_usage < 0x81 || hid_usage > 0x83) && hid_usage != 0x9B && hid_usage != 0x00) return;
 
     uint8_t i = 0;
     memset(payload, 0, PACKET_MAX_LEN);
 
     payload[i++] = LKBT51_CMD_SEND_SYSTEM;
-    payload[i++] = 0x01 << (hid_usage - 0x81);
+    if (hid_usage == 0x00) {
+        payload[i++] = 0x00;
+    } else if (hid_usage >= 0x81 && hid_usage <= 0x83) {
+        payload[i++] = 0x01 << (hid_usage - 0x81);
+    } else if (hid_usage == 0x9B) {
+        payload[i++] = 0x08;
+    }
 
     lkbt51_send_cmd(payload, i, true, false);
 }
